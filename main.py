@@ -309,7 +309,7 @@ def Compress(w, IV):
 
 
 if __name__ == "__main__":
-    c = 'abc'  # 要加密的内容
+    c = 'wwlwwlwwlabcdef0123456789876543210fedcba'  # 要加密的内容
     m = Fill(c)
     w = Expand(m)
     b = Iteration(m, w)
