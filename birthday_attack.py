@@ -1,4 +1,4 @@
-import SM3
+import sm3
 import random
 
 for j in range(0,1000):
