@@ -307,10 +307,12 @@ def Compress(w, IV):
     v = HtoB(IV)
     return BtoH(Xor(r, v))
 
+def SM3(c)：
+    m=Fill(c)
+    w = Expand(m)
+    b = Iteration(m, w)
+    return b
 
 if __name__ == "__main__":
     c = 'abccba'  # 要加密的内容
-    m = Fill(c)
-    w = Expand(m)
-    b = Iteration(m, w)
-    print(b)
+    print(SM3(c))
