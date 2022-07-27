@@ -1,15 +1,26 @@
-import sm3
+from sm3 import *
 import random
+import time
 
-for j in range(0,1000):
-    count = 0
-    for i in range(0,2**16):
-        x = str(random.randint(0,2**256))
-        y = str(random.randint(0,2**256))
-        x1 = sm3.SM3(x)
-        y1 = sm3.SM3(y)
-        x2 = x1[0:8]
-        y2 = y1[0:8]
-        if(x2 == y2):
-            print("True")
-print("end")
+
+def BirthdayAttack(n):
+    while 1:
+        x = random.random()
+        y = random.random()
+        h1 = SM3(str(x))
+        h2 = SM3(str(y))
+        if h1[:n] == h2[:n]:
+            break
+    return (h1[:n], h2[:n])
+
+
+while 1:
+    n = int(input("规模（单位：Byte）："))
+    start = time.time()
+    for i in range(10):
+        BirthdayAttack(n)
+    end = time.time()
+    runtime = (end - start) / 10
+    print("用时：", runtime, "s")
+    if n == 0:
+        break
